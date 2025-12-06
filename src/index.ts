@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import affirmationRoutes from './routes/affirmationRoutes';
-import healthRoutes from './routes/healthRoutes';
+import affirmationRoutes from './routes/affirmationRoutes.js';
+import healthRoutes from './routes/healthRoutes.js';
 
 dotenv.config();
 

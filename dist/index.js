@@ -32865,7 +32865,7 @@ var require_src7 = __commonJS((exports) => {
 });
 
 // src/index.ts
-var import_express2 = __toESM(require_express2(), 1);
+var import_express3 = __toESM(require_express2(), 1);
 var import_dotenv2 = __toESM(require_main(), 1);
 
 // src/routes/affirmationRoutes.ts
@@ -46637,8 +46637,7 @@ async function generateAffirmation(category) {
   const prompt = category ? `Generate a short, powerful affirmation about ${category}.` : "Generate a short, powerful random affirmation.";
   try {
     const response = await ai.models.generateContent({
-      model: "gemini-2.0-flash-exp",
-      model: "gemini-1.5-flash",
+      model: "gemini-2.0-flash",
       contents: prompt
     });
     return response.text || "Stay positive!";
@@ -46686,12 +46685,30 @@ router.get("/categories", getCategories);
 router.get("/affirmations", getAffirmation);
 var affirmationRoutes_default = router;
 
+// src/routes/healthRoutes.ts
+var import_express2 = __toESM(require_express2(), 1);
+
+// src/controllers/healthController.ts
+var getHealth = (req, res) => {
+  res.status(200).json({
+    status: "UP",
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime()
+  });
+};
+
+// src/routes/healthRoutes.ts
+var router2 = import_express2.Router();
+router2.get("/health", getHealth);
+var healthRoutes_default = router2;
+
 // src/index.ts
 import_dotenv2.default.config();
-var app = import_express2.default();
+var app = import_express3.default();
 var port = process.env.PORT || 3000;
-app.use(import_express2.default.json());
+app.use(import_express3.default.json());
 app.use("/api", affirmationRoutes_default);
+app.use("/api", healthRoutes_default);
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });

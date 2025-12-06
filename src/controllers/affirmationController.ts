@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { generateAffirmation } from '../services/gemini';
-import { CategoryListResponse, AffirmationResponse } from '../models/types';
+import { generateAffirmation } from '../services/gemini.js';
+import { CategoryListResponse, AffirmationResponse } from '../models/types.js';
 
 export const getRandomAffirmation = async (req: Request, res: Response) => {
     const affirmation = await generateAffirmation();

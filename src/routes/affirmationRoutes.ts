@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getRandomAffirmation, getCategories, getAffirmation } from '../controllers/affirmationController';
+import { getRandomAffirmation, getCategories, getAffirmation } from '../controllers/affirmationController.js';
 
 const router = Router();
 
